@@ -28,7 +28,10 @@ namespace Creating_Invoices.ViewModel.Base
         {
             return this.canExecute == null || this.canExecute(parameter);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameter"></param>
         public void Execute(object parameter)
         {
             this.execute(parameter);
