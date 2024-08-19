@@ -1,0 +1,96 @@
+﻿<mah:MetroWindow x:Class="Creating_Invoices.CollationWindowRangeShop"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:s="clr-namespace:System;assembly=mscorlib"
+                 xmlns:local ="clr-namespace:Creating_Invoices.ViewModel"
+                 xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+                 Dialog:DialogParticipation.Register="{Binding}"
+        Title="{Binding Title}" MinHeight="700" Height="700" MinWidth="900" Width="900">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed">
+            <i:InvokeCommandAction Command="{Binding ClouseThread}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Window.DataContext>
+        <local:VMCollationRangeShop/>
+    </Window.DataContext>
+    <mah:MetroTabControl Style="{DynamicResource MahApps.Styles.TabControl.Animated}">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="SelectionChanged">
+                <i:InvokeCommandAction Command="{Binding Clear}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <mah:MetroTabItem Header="Накладня прихода товара" IsSelected="{Binding SelectInvoices[0]}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MinWidth="200" Width="200*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding SelectedDateTimeTwo, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,0,10,0"  />
+                <TextBlock Text="Выберите диапазон дат" HorizontalAlignment="Left" VerticalAlignment="Center" Height="16" />
+                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding SelectedDateTimeOne, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="250,0,0,0"  />
+                <ComboBox mah:TextBoxHelper.Watermark="Выберите поставщика" VerticalAlignment="Center" HorizontalAlignment="Center" MinHeight="25" Margin="0,0,250,0" ItemsSource="{Binding ShopName}" SelectedItem="{Binding SelectShopName}"/> 
+                <DataGrid ItemsSource="{Binding Shops}" Grid.Row="1" AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Дата" MinWidth="200" Binding="{Binding Date}"/>
+                        <DataGridTextColumn Header="Общая сумма без наценки" MinWidth="300" Binding="{Binding RangeProvideBuy,StringFormat={}{0:F2}}"/>
+                        <DataGridTextColumn Header="Общая сумма с наценкой" MinWidth="300" Binding="{Binding RangeProvideSell ,StringFormat={}{0:F2}}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBlock Grid.Row="2" TextWrapping="Wrap" Width="100" Margin="10,0,0,0" HorizontalAlignment="Left">Общая сумма
+                без наценки</TextBlock>
+                <TextBlock Grid.Row="2" Width="150" Margin="200,0,0,0" HorizontalAlignment="Left" Text="{Binding TotalAmountBuy,StringFormat={}{0:F2}}"/>
+                <TextBlock Grid.Row="2" TextWrapping="Wrap" Width="100" Margin="0,0,10,0" HorizontalAlignment="Right" Text="Общая сумма с наценкой"/>
+                <TextBlock Grid.Row="2" Width="150" Margin="0,0,200,0" HorizontalAlignment="Right" Text="{Binding TotalAmountSell,StringFormat={}{0:F2}}"/>
+            </Grid>
+        </mah:MetroTabItem>
+        <mah:MetroTabItem Header="Накладная расхода" IsSelected="{Binding SelectInvoices[1]}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MinWidth="200" Width="200*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding SelectedDateTimeTwo, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,0,10,0"  />
+                <TextBlock Text="Выберите диапазон дат" HorizontalAlignment="Left" VerticalAlignment="Center" Height="16"  />
+                <ComboBox mah:TextBoxHelper.Watermark="Выберите поставщика" VerticalAlignment="Center" HorizontalAlignment="Center" Height="200" Margin="0,0,250,0" ItemsSource="{Binding ShopName}" SelectedItem="{Binding SelectShopName}"/>
+                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding SelectedDateTimeOne, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="200,0,0,0"  />
+                <DataGrid ItemsSource="{Binding Shops}" Grid.Row="1" AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Дата" MinWidth="200" Binding="{Binding DateExpenditure}"/>
+                        <DataGridTextColumn Header="Общая сумма расхода" MinWidth="300" Binding="{Binding TotalAmountExpenditure,StringFormat={}{0:F2}}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" HorizontalAlignment="Left" Width="100" Margin="10,0,0,0">
+                               Процент
+                    </TextBlock>
+                    <TextBox Text="{Binding Precent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" HorizontalAlignment="Right" Width="100" Grid.Column="0" Margin="0,0,10,0" />
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Width="100" Margin="10,0,0,0">
+                                Сумма на <LineBreak/>
+                                зарплату
+                    </TextBlock>
+                    <TextBlock Text="{Binding PrecentZP,StringFormat={}{0:F2}}" HorizontalAlignment="Right" Width="100" Grid.Column="1" Margin="0,0,10,0" />
+                </Grid>
+            </Grid>
+        </mah:MetroTabItem>
+    </mah:MetroTabControl>
+</mah:MetroWindow>

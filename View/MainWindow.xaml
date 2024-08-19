@@ -1,0 +1,1444 @@
+﻿<mah:MetroWindow x:Class="Creating_Invoices.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:s="clr-namespace:System;assembly=mscorlib"
+                 xmlns:local ="clr-namespace:Creating_Invoices.ViewModel"
+                 xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+                 Dialog:DialogParticipation.Register="{Binding}"
+        Title="{Binding Title}" MinHeight="800" Height="800" MinWidth="900" Width="900">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed">
+            <i:InvokeCommandAction Command="{Binding ClouseThread}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Window.DataContext>
+        <local:VMCreatingInvoices/>
+    </Window.DataContext>
+    <mah:MetroTabControl Style="{DynamicResource MahApps.Styles.TabControl.Animated}">
+        <mah:MetroTabItem Header="Создание накладной">
+            <mah:MetroTabControl Style="{DynamicResource MahApps.Styles.TabControl.Animated}">
+                <mah:MetroTabItem Header="Накладня прихода товара">
+                    <mah:MetroTabControl Style="{DynamicResource MahApps.Styles.TabControl.Animated}">
+                        <mah:MetroTabItem Header="Менделеева 42" mah:HeaderedControlHelper.HeaderFontSize="19" IsSelected="{Binding IsSelectTabControl[0]}">
+                            <Grid x:Name="mendel42">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*" />
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Сумма с наценкой" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Width="102"/>
+                                <TextBlock Text="Процент наценки" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Width="100"/>
+                                <TextBlock Text="Дата" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="25"/>
+                                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding Shops[0].Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  />
+                                <!--<TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="ДД/ММ/ГГГГ"/>-->
+
+                                <TextBlock Text="НевХолод" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].NevholodBuy, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].NevholodPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].NevholodSell, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Пятигорск" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].PyatigorskBuy, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].PyatigorskPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].PyatigorskSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Абдурахманов" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].AbdurahmanovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].AbdurahmanovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].AbdurahmanovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Абдурахманов2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].AbdurahmanovBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].AbdurahmanovPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].AbdurahmanovSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Авозин" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].AvozinBuy,UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].AvozinPercent,UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].AvozinSell,UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Вардумян" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].VarduminBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].VarduminPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].VarduminSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мария" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].MariyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].MariyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].MariySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мелконян" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].MelconynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].MelconynPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].MelconynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мелконян2" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].MelconynBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].MelconynPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].MelconynSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Коляда" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].KolydaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].KolydaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].KolydaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Фатима" Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].FatimaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].FatimaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].FatimaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Иминов" Grid.Row="12" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].IminovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].IminovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].IminovSell, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебодар" Grid.Row="13" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].HlebodarBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].HlebodarPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].HlebodarSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Текеев" Grid.Row="14" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].TeckeevBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].TeckeevPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].TeckeevSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                
+                                <TextBlock Text="Текеев2" Grid.Row="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].TeckeevBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].TeckeevPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].TeckeevSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Токов" Grid.Row="16" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" />
+                                <TextBox Text="{Binding Shops[0].TokovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].TokovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].TokovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Тищенко" Grid.Row="17" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].TichenkoBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].TichenkoPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].TichenkoSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Фарше" Grid.Row="18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].FarheBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].FarhePercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].FarheSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Корма" Grid.Row="19" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].KormaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].KormaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].KormaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Корма2" Grid.Row="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].KormaBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].KormaPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].KormaSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Люля" Grid.Row="21" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].LulyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].LulyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].LulySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Лавина Хлеб" Grid.Row="22" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].LavinaBreadBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].LavinaBreadPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].LavinaBreadSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Люля-Григорян" Grid.Row="23" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].LulyGrigorynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].LulyGrigorynPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].LulyGrigorynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Лаваш Григорян" Grid.Row="24" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].LavachGrigorynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].LavachGrigorynPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].LavachGrigorynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебком Невинномысск" Grid.Row="25" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].CityNSKBreadFactorBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].CityNSKBreadFactorPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].CityNSKBreadFactorSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебком Невинномысск2" Grid.Row="26" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].CityNSKBreadFactorBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].CityNSKBreadFactorPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].CityNSKBreadFactorSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Айсанов" Grid.Row="27" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].AysanovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].AysanovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].AysanovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Иней" Grid.Row="28" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].IneyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].IneyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].IneySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 1" Grid.Row="29" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].Base1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="29" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="29" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[0].Base1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="29" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 2" Grid.Row="30" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].Base2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="30" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="30" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[0].Base2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="30" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 3" Grid.Row="31" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[0].Base3,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="31" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="31" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[0].Base3,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="31" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Переоценка +" Grid.Row="32" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[0].RevaluationPlus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="32" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="32" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[0].RevaluationPlus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="32" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Переоценка -" Grid.Row="33" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[0].RevaluationMinus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="33" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="33" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[0].RevaluationMinus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="33" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Списание" Grid.Row="34" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[0].WriteDowns,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="34" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="34" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[0].WriteDowns,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="34" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Общая сумма" Grid.Row="35" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <Button Content="Создать" Command="{Binding CreatingReceiptInvoice}" Grid.Row="35" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].TotalAmountBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="35" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[0].TotalAmountSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="35" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </Grid>
+                        </mah:MetroTabItem>
+                        <mah:MetroTabItem Header="Менделеева 5" mah:HeaderedControlHelper.HeaderFontSize="19" IsSelected="{Binding IsSelectTabControl[1]}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*" />
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Сумма с наценкой" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Width="102"/>
+                                <TextBlock Text="Процент наценки" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Width="100"/>
+                                <TextBlock Text="Дата" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="25"/>
+                                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding Shops[1].Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  />
+                                <!--<TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="ДД/ММ/ГГГГ"/>-->
+
+                                <TextBlock Text="НевХолод" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].NevholodBuy, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].NevholodPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].NevholodSell, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Пятигорск" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].PyatigorskBuy, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].PyatigorskPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].PyatigorskSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Абдурахманов" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].AbdurahmanovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].AbdurahmanovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].AbdurahmanovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Абдурахманов2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].AbdurahmanovBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].AbdurahmanovPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].AbdurahmanovSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Авозин" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].AvozinBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].AvozinPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].AvozinSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Вардумян" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].VarduminBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].VarduminPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].VarduminSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мария" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].MariyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].MariyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].MariySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мелконян" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].MelconynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].MelconynPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].MelconynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мелконян2" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].MelconynBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].MelconynPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].MelconynSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Коляда" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].KolydaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].KolydaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].KolydaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Фатима" Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].FatimaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].FatimaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].FatimaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Иминов" Grid.Row="12" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].IminovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].IminovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].IminovSell, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебодар" Grid.Row="13" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].HlebodarBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].HlebodarPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].HlebodarSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Текеев" Grid.Row="14" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].TeckeevBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].TeckeevPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].TeckeevSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Текеев2" Grid.Row="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].TeckeevBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].TeckeevPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].TeckeevSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Токов" Grid.Row="16" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" />
+                                <TextBox Text="{Binding Shops[1].TokovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].TokovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].TokovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Тищенко" Grid.Row="17" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].TichenkoBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].TichenkoPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].TichenkoSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Фарше" Grid.Row="18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].FarheBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].FarhePercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].FarheSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Корма" Grid.Row="19" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].KormaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].KormaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].KormaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Корма2" Grid.Row="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].KormaBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].KormaPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].KormaSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Люля" Grid.Row="21" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].LulyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].LulyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].LulySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Лавина Хлеб" Grid.Row="22" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].LavinaBreadBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].LavinaBreadPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].LavinaBreadSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Люля-Григорян" Grid.Row="23" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].LulyGrigorynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].LulyGrigorynPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].LulyGrigorynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Лаваш Григорян" Grid.Row="24" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].LavachGrigorynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].LavachGrigorynPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].LavachGrigorynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебком Невинномысск" Grid.Row="25" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].CityNSKBreadFactorBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].CityNSKBreadFactorPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].CityNSKBreadFactorSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебком Невинномысск2" Grid.Row="26" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16"/>
+                                <TextBox Text="{Binding Shops[1].CityNSKBreadFactorBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].CityNSKBreadFactorPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].CityNSKBreadFactorSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Айсанов" Grid.Row="27" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].AysanovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].AysanovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].AysanovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Иней" Grid.Row="28" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].IneyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].IneyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].IneySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 1" Grid.Row="29" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].Base1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="29" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="29" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[1].Base1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="29" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 2" Grid.Row="30" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].Base2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="30" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="30" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[1].Base2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="30" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 3" Grid.Row="31" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[1].Base3,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="31" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="31" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[1].Base3,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="31" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Переоценка +" Grid.Row="32" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[1].RevaluationPlus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="32" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="32" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[1].RevaluationPlus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="32" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Переоценка -" Grid.Row="33" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[1].RevaluationMinus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="33" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="33" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[1].RevaluationMinus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="33" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Списание" Grid.Row="34" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[1].WriteDowns,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="34" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="34" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[1].WriteDowns,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="34" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Общая сумма" Grid.Row="35" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <Button Content="Создать" Command="{Binding CreatingReceiptInvoice}" Grid.Row="35" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].TotalAmountBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="35" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[1].TotalAmountSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="35" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </Grid>
+                        </mah:MetroTabItem>
+                        <mah:MetroTabItem Header="Маяковского 4" mah:HeaderedControlHelper.HeaderFontSize="19" IsSelected="{Binding IsSelectTabControl[2]}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*" />
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Сумма с наценкой" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Width="102"/>
+                                <TextBlock Text="Процент наценки" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Width="100"/>
+                                <TextBlock Text="Дата" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="25"/>
+                                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding Shops[2].Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  />
+                                <!--<TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="ДД/ММ/ГГГГ"/>-->
+
+                                <TextBlock Text="НевХолод" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].NevholodBuy, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].NevholodPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].NevholodSell, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Пятигорск" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].PyatigorskBuy, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].PyatigorskPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].PyatigorskSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Абдурахманов" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].AbdurahmanovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].AbdurahmanovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].AbdurahmanovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Абдурахманов2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].AbdurahmanovBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].AbdurahmanovPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].AbdurahmanovSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Авозин" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].AvozinBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].AvozinPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].AvozinSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Вардумян" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].VarduminBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].VarduminPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].VarduminSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мария" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].MariyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].MariyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].MariySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мелконян" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].MelconynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].MelconynPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].MelconynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мелконян2" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].MelconynBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].MelconynPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].MelconynSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Коляда" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].KolydaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].KolydaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].KolydaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Фатима" Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].FatimaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].FatimaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].FatimaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Иминов" Grid.Row="12" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].IminovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].IminovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].IminovSell, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебодар" Grid.Row="13" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].HlebodarBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].HlebodarPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].HlebodarSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Текеев" Grid.Row="14" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].TeckeevBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].TeckeevPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].TeckeevSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Текеев2" Grid.Row="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].TeckeevBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].TeckeevPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].TeckeevSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Токов" Grid.Row="16" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" />
+                                <TextBox Text="{Binding Shops[2].TokovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].TokovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].TokovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Тищенко" Grid.Row="17" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].TichenkoBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].TichenkoPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].TichenkoSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Фарше" Grid.Row="18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].FarheBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].FarhePercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].FarheSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Корма" Grid.Row="19" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].KormaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].KormaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].KormaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Корма2" Grid.Row="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].KormaBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].KormaPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].KormaSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Люля" Grid.Row="21" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].LulyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].LulyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].LulySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Лавина Хлеб" Grid.Row="22" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].LavinaBreadBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].LavinaBreadPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].LavinaBreadSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Люля-Григорян" Grid.Row="23" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].LulyGrigorynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].LulyGrigorynPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].LulyGrigorynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Лаваш Григорян" Grid.Row="24" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].LavachGrigorynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].LavachGrigorynPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].LavachGrigorynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебком Невинномысск" Grid.Row="25" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].CityNSKBreadFactorBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].CityNSKBreadFactorPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].CityNSKBreadFactorSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебком Невинномысск2" Grid.Row="26" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16"/>
+                                <TextBox Text="{Binding Shops[2].CityNSKBreadFactorBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].CityNSKBreadFactorPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].CityNSKBreadFactorSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Айсанов" Grid.Row="27" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].AysanovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].AysanovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].AysanovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Иней" Grid.Row="28" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].IneyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].IneyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].IneySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 1" Grid.Row="29" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].Base1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="29" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="29" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[2].Base1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="29" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 2" Grid.Row="30" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].Base2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="30" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="30" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[2].Base2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="30" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 3" Grid.Row="31" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[2].Base3,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="31" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="31" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[2].Base3,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="31" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Переоценка +" Grid.Row="32" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[2].RevaluationPlus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="32" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="32" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[2].RevaluationPlus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="32" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Переоценка -" Grid.Row="33" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[2].RevaluationMinus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="33" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="33" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[2].RevaluationMinus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="33" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Списание" Grid.Row="34" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[2].WriteDowns,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="34" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="34" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[2].WriteDowns,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="34" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Общая сумма" Grid.Row="35" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <Button Content="Создать" Command="{Binding CreatingReceiptInvoice}" Grid.Row="35" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].TotalAmountBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="35" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[2].TotalAmountSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="35" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </Grid>
+                        </mah:MetroTabItem>
+                        <mah:MetroTabItem Header="Достоевского 11а" mah:HeaderedControlHelper.HeaderFontSize="19" IsSelected="{Binding IsSelectTabControl[3]}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*" />
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Сумма с наценкой" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Width="102"/>
+                                <TextBlock Text="Процент наценки" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Width="100"/>
+                                <TextBlock Text="Дата" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="25"/>
+                                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding Shops[3].Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  />
+                                <!--<TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="ДД/ММ/ГГГГ"/>-->
+
+                                <TextBlock Text="НевХолод" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].NevholodBuy, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].NevholodPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].NevholodSell, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Пятигорск" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].PyatigorskBuy, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].PyatigorskPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].PyatigorskSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Абдурахманов" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].AbdurahmanovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].AbdurahmanovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].AbdurahmanovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Абдурахманов2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].AbdurahmanovBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].AbdurahmanovPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].AbdurahmanovSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Авозин" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].AvozinBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].AvozinPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].AvozinSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Вардумян" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].VarduminBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].VarduminPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].VarduminSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мария" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].MariyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].MariyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].MariySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мелконян" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].MelconynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].MelconynPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].MelconynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мелконян2" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].MelconynBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].MelconynPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].MelconynSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Коляда" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].KolydaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].KolydaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].KolydaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Фатима" Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].FatimaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].FatimaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].FatimaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Иминов" Grid.Row="12" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].IminovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].IminovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].IminovSell, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебодар" Grid.Row="13" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].HlebodarBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].HlebodarPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].HlebodarSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Текеев" Grid.Row="14" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].TeckeevBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].TeckeevPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].TeckeevSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Текеев2" Grid.Row="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].TeckeevBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].TeckeevPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].TeckeevSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Токов" Grid.Row="16" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" />
+                                <TextBox Text="{Binding Shops[3].TokovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].TokovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].TokovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Тищенко" Grid.Row="17" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].TichenkoBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].TichenkoPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].TichenkoSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Фарше" Grid.Row="18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].FarheBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].FarhePercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].FarheSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Корма" Grid.Row="19" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].KormaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].KormaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].KormaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Корма2" Grid.Row="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].KormaBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].KormaPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].KormaSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Люля" Grid.Row="21" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].LulyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].LulyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].LulySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Лавина Хлеб" Grid.Row="22" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].LavinaBreadBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].LavinaBreadPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].LavinaBreadSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Люля-Григорян" Grid.Row="23" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].LulyGrigorynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].LulyGrigorynPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].LulyGrigorynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Лаваш Григорян" Grid.Row="24" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].LavachGrigorynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].LavachGrigorynPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].LavachGrigorynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебком Невинномысск" Grid.Row="25" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].CityNSKBreadFactorBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].CityNSKBreadFactorPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].CityNSKBreadFactorSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебком Невинномысск2" Grid.Row="26" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16"/>
+                                <TextBox Text="{Binding Shops[3].CityNSKBreadFactorBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].CityNSKBreadFactorPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].CityNSKBreadFactorSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Айсанов" Grid.Row="27" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].AysanovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].AysanovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].AysanovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Иней" Grid.Row="28" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].IneyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].IneyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].IneySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 1" Grid.Row="29" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].Base1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="29" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="29" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[3].Base1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="29" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 2" Grid.Row="30" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].Base2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="30" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="30" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[3].Base2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="30" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 3" Grid.Row="31" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[3].Base3,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="31" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="31" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[3].Base3,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="31" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Переоценка +" Grid.Row="32" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[3].RevaluationPlus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="32" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="32" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[3].RevaluationPlus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="32" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Переоценка -" Grid.Row="33" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[3].RevaluationMinus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="33" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="33" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[3].RevaluationMinus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="33" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Списание" Grid.Row="34" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[3].WriteDowns,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="34" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="34" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[3].WriteDowns,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="34" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Общая сумма" Grid.Row="35" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <Button Content="Создать" Command="{Binding CreatingReceiptInvoice}" Grid.Row="35" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].TotalAmountBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="35" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[3].TotalAmountSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="35" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </Grid>
+                        </mah:MetroTabItem>
+                        <mah:MetroTabItem Header="Водопроводная 358" mah:HeaderedControlHelper.HeaderFontSize="19" IsSelected="{Binding IsSelectTabControl[4]}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*" />
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Сумма с наценкой" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Width="102"/>
+                                <TextBlock Text="Процент наценки" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Width="100"/>
+                                <TextBlock Text="Дата" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="25"/>
+                                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding Shops[4].Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  />
+                                <!--<TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="ДД/ММ/ГГГГ"/>-->
+
+                                <TextBlock Text="НевХолод" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].NevholodBuy, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].NevholodPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].NevholodSell, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Пятигорск" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].PyatigorskBuy, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].PyatigorskPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].PyatigorskSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Абдурахманов" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].AbdurahmanovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].AbdurahmanovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].AbdurahmanovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Абдурахманов2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].AbdurahmanovBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].AbdurahmanovPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].AbdurahmanovSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Авозин" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].AvozinBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].AvozinPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].AvozinSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Вардумян" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].VarduminBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].VarduminPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].VarduminSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мария" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].MariyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].MariyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].MariySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мелконян" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].MelconynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].MelconynPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].MelconynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Мелконян2" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].MelconynBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].MelconynPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].MelconynSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="9" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Коляда" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].KolydaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].KolydaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].KolydaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="10" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Фатима" Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].FatimaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].FatimaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].FatimaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="11" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Иминов" Grid.Row="12" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].IminovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].IminovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].IminovSell, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="12" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебодар" Grid.Row="13" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].HlebodarBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].HlebodarPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].HlebodarSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="13" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Текеев" Grid.Row="14" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].TeckeevBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].TeckeevPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].TeckeevSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="14" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Текеев2" Grid.Row="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].TeckeevBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].TeckeevPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].TeckeevSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="15" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Токов" Grid.Row="16" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" />
+                                <TextBox Text="{Binding Shops[4].TokovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].TokovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].TokovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="16" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Тищенко" Grid.Row="17" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].TichenkoBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].TichenkoPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].TichenkoSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="17" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Фарше" Grid.Row="18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].FarheBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].FarhePercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].FarheSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="18" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Корма" Grid.Row="19" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].KormaBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].KormaPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].KormaSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="19" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Корма2" Grid.Row="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].KormaBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].KormaPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].KormaSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="20" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Люля" Grid.Row="21" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].LulyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].LulyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].LulySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="21" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Лавина Хлеб" Grid.Row="22" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].LavinaBreadBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].LavinaBreadPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].LavinaBreadSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="22" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Люля-Григорян" Grid.Row="23" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].LulyGrigorynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].LulyGrigorynPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].LulyGrigorynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="23" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Лаваш Григорян" Grid.Row="24" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].LavachGrigorynBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].LavachGrigorynPercent, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].LavachGrigorynSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="24" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебком Невинномысск" Grid.Row="25" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].CityNSKBreadFactorBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].CityNSKBreadFactorPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].CityNSKBreadFactorSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="25" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Хлебком Невинномысск2" Grid.Row="26" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16"/>
+                                <TextBox Text="{Binding Shops[4].CityNSKBreadFactorBuy2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].CityNSKBreadFactorPercent2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].CityNSKBreadFactorSell2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="26" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Айсанов" Grid.Row="27" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].AysanovBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].AysanovPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].AysanovSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="27" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Иней" Grid.Row="28" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].IneyBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].IneyPercent,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].IneySell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="28" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 1" Grid.Row="29" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].Base1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="29" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="29" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[4].Base1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="29" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 2" Grid.Row="30" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].Base2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="30" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="30" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[4].Base2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="30" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="База 3" Grid.Row="31" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <TextBox Text="{Binding Shops[4].Base3,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="31" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="31" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[4].Base3,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="31" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Переоценка +" Grid.Row="32" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[4].RevaluationPlus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="32" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="32" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[4].RevaluationPlus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="32" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Переоценка -" Grid.Row="33" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[4].RevaluationMinus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="33" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="33" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[4].RevaluationMinus,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="33" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Списание" Grid.Row="34" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBox Text="{Binding Shops[4].WriteDowns,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="34" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="Не используется" Grid.Row="34" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Shops[4].WriteDowns,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="34" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Общая сумма" Grid.Row="35" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
+                                <Button Content="Создать" Command="{Binding CreatingReceiptInvoice}" Grid.Row="35" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].TotalAmountBuy,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="35" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBox Text="{Binding Shops[4].TotalAmountSell,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="35" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </Grid>
+                        </mah:MetroTabItem>
+                    </mah:MetroTabControl>
+                </mah:MetroTabItem>
+                <mah:MetroTabItem Header="Накладная расхода">
+                    <mah:MetroTabControl Style="{DynamicResource MahApps.Styles.TabControl.Animated}" >
+                        <mah:MetroTabItem Header="Менделеева 42" mah:HeaderedControlHelper.HeaderFontSize="19" IsSelected="{Binding IsSelectTabControlExpenditure[0]}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Дата" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="25"/>
+                                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding Shops[0].DateExpenditure, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  />
+                                <!--<TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="ДД/ММ/ГГГГ"/>-->
+
+                                <TextBlock Text="Наличные" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[0].Nalic, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Банк 1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[0].Bank1, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Банк 2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[0].Bank2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="QR код1" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[0].QRcode1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="QR код2" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[0].QRcode2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="СБП" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[0].SBP,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="ЗП" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[0].ZP,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Общая сумма" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[0].TotalAmountExpenditure,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <Button Content="Создать" Command="{Binding CreatingOverheadExpense}" Grid.Row="9" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </Grid>
+                        </mah:MetroTabItem>
+                        <mah:MetroTabItem Header="Менделеева 5" mah:HeaderedControlHelper.HeaderFontSize="19" IsSelected="{Binding IsSelectTabControlExpenditure[1]}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Дата" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="25"/>
+                                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding Shops[1].DateExpenditure, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  />
+                                <!--<TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="ДД/ММ/ГГГГ"/>-->
+
+                                <TextBlock Text="Наличные" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[1].Nalic, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Банк 1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[1].Bank1, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Банк 2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[1].Bank2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="QR код1" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[1].QRcode1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="QR код2" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[1].QRcode2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="СБП" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[1].SBP,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="ЗП" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[1].ZP,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Общая сумма" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[1].TotalAmountExpenditure,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                
+                                <Button Content="Создать" Command="{Binding CreatingOverheadExpense}" Grid.Row="9" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </Grid>
+                        </mah:MetroTabItem>
+                        <mah:MetroTabItem Header="Маяковского 4" mah:HeaderedControlHelper.HeaderFontSize="19" IsSelected="{Binding IsSelectTabControlExpenditure[2]}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Дата" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="25"/>
+                                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding Shops[2].DateExpenditure, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  />
+                                <!--<TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="ДД/ММ/ГГГГ"/>-->
+
+                                <TextBlock Text="Наличные" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[2].Nalic, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Банк 1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[2].Bank1, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Банк 2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[2].Bank2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="QR код1" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[2].QRcode1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="QR код2" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[2].QRcode2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="СБП" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[2].SBP,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="ЗП" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[2].ZP,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Общая сумма" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[2].TotalAmountExpenditure,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <Button Content="Создать" Command="{Binding CreatingOverheadExpense}" Grid.Row="9" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </Grid>
+                        </mah:MetroTabItem>
+                        <mah:MetroTabItem Header="Достоевского 11а" mah:HeaderedControlHelper.HeaderFontSize="19" IsSelected="{Binding IsSelectTabControlExpenditure[3]}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Дата" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="25"/>
+                                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding Shops[3].DateExpenditure, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  />
+                                <!--<TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="ДД/ММ/ГГГГ"/>-->
+
+                                <TextBlock Text="Наличные" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[3].Nalic, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Банк 1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[3].Bank1, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Банк 2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[3].Bank2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="QR код1" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[3].QRcode1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="QR код2" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[3].QRcode2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="СБП" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[3].SBP,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="ЗП" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[3].ZP,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Общая сумма" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[3].TotalAmountExpenditure,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <Button Content="Создать" Command="{Binding CreatingOverheadExpense}" Grid.Row="9" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </Grid>
+                        </mah:MetroTabItem>
+                        <mah:MetroTabItem Header="Водопроводная 358" mah:HeaderedControlHelper.HeaderFontSize="19" IsSelected="{Binding IsSelectTabControlExpenditure[4]}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="200" Width="200*"/>
+                                    <ColumnDefinition MinWidth="200" Width="200*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Дата" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="25"/>
+                                <mah:DateTimePicker Culture="ru-RU" mah:TextBoxHelper.Watermark=" Выберите дату" SelectedDateTime="{Binding Shops[4].DateExpenditure, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  />
+                                <!--<TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="ДД/ММ/ГГГГ"/>-->
+
+                                <TextBlock Text="Наличные" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[4].Nalic, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Банк 1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[4].Bank1, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Банк 2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[4].Bank2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="QR код1" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[4].QRcode1,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="QR код2" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[4].QRcode2,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="СБП" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[4].SBP,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="ЗП" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[4].ZP,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <TextBlock Text="Общая сумма" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBox Text="{Binding Shops[4].TotalAmountExpenditure,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                <Button Content="Создать" Command="{Binding CreatingOverheadExpense}" Grid.Row="9" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </Grid>
+                        </mah:MetroTabItem>
+                    </mah:MetroTabControl>
+                </mah:MetroTabItem>
+            </mah:MetroTabControl>
+        </mah:MetroTabItem>
+        <mah:MetroTabItem Header="Функции сверки">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Content="Запрос детальной сверки" Height="10" Width="190" VerticalAlignment="Center" HorizontalAlignment="Center" Command="{Binding StartCollation}"  Grid.Row="0" Grid.Column="0"/>
+                <Button Content="Запрос сверки по диапозону" Height="10" Width="190" VerticalAlignment="Center" HorizontalAlignment="Center" Command="{Binding StartCollationRange}"  Grid.Row="0" Grid.Column="1"/>
+                <Button Content="Запрос сверки поставщика по диапозону" Height="10" Width="300" VerticalAlignment="Center" HorizontalAlignment="Center" Command="{Binding StartCollationRangeProvider}"  Grid.Row="1" Grid.Column="0"/>
+
+            </Grid>
+        </mah:MetroTabItem>
+    </mah:MetroTabControl>
+</mah:MetroWindow>
