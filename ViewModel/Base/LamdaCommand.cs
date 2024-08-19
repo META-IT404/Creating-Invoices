@@ -32,7 +32,6 @@ namespace Creating_Invoices.ViewModel.Base
         public void Execute(object parameter)
         {
             this.execute(parameter);
-
         }
     }
 }
