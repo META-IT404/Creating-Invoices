@@ -75,7 +75,7 @@
                         <!--<TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="ДД/ММ/ГГГГ"/>-->
 
                         <TextBlock Text="НевХолод" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
-                        <TextBox Text="{Binding Shops[0].NevholodBuy, UpdateSourceTrigger=PropertyChanged,StringFormat={}{M}}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <TextBox Text="{Binding Shops[0].NevholodBuy, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <TextBox Text="{Binding Shops[0].NevholodSell, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:F2}}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
                         <TextBlock Text="Пятигорск" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" />
